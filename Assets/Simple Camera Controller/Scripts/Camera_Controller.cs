@@ -3,7 +3,7 @@ using System.Collections;
  
 public class Camera_Controller : MonoBehaviour
 {
-
+    public bool Active = false;
  
 
     public float Normal_Speed = 25.0f; //Normal movement speed
@@ -22,8 +22,15 @@ public class Camera_Controller : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Active = !Active;
+        }
 
-
+        if (!Active)
+        {
+            return;
+        }
 
         //Camera angles based on mouse position
         Mouse_Location = Input.mousePosition - Mouse_Location;

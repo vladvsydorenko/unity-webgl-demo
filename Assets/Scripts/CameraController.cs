@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     public bool invertMouse;
     public bool autoLockCursor;
 
+    public bool Enabled = false;
+
     private Camera cam;
 
     void Awake()
@@ -21,6 +23,17 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Enabled = !Enabled;
+            return;
+        }
+
+        if (!Enabled)
+        {
+            return;
+        }
+
         float speed = (moveSpeed + (Input.GetAxis("Fire3") * shiftAdditionalSpeed));
         this.gameObject.transform.Translate(Vector3.forward * speed * Input.GetAxis("Vertical"));
         this.gameObject.transform.Translate(Vector3.right * speed * Input.GetAxis("Horizontal"));
